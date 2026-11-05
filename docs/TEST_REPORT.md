@@ -6,7 +6,7 @@ Date: 5 November 2026. This report distinguishes executed local checks from unve
 
 The installation/authorization blocker was resolved. Branch creation succeeded, and import commit `010bcc929339890cdafee4ad5299006108c9eca4` was published to `main`. All 48 source/evidence files and both preserved artifacts matched local Git object hashes.
 
-[CI run 42048478123](https://github.com/siddharthydu/Genflow-Agent/actions/runs/42048478123) was cancelled at the 20-minute backend job limit while downloading FFmpeg dependencies from `azure.archive.ubuntu.com`. No backend tests ran and APK/container/browser jobs were skipped. This was not a test pass. The workflow now switches that mirror to official Ubuntu HTTPS endpoints, limits dependency installation time, and runs Android/container/browser checks independently. Results of the next run must be checked separately.
+[CI run 42048478123](https://github.com/siddharthydu/Genflow-Agent/actions/runs/42048478123) was cancelled at the 20-minute backend job limit while downloading FFmpeg dependencies from `azure.archive.ubuntu.com`. No backend tests ran and APK/container/browser jobs were skipped. This was not a test pass. The workflow now switches that mirror to official Ubuntu HTTPS endpoints, limits dependency installation time, and runs Android/container/browser checks independently. [CI run 42095658691](https://github.com/siddharthydu/Genflow-Agent/actions/runs/42095658691) confirmed 35 backend/media tests passed (38 discovered, 3 browser tests skipped in that job) and all 3 browser fixtures passed in the separate Chromium job. The Android setup action failed before compilation because its default package list included the removed `tools` package. Both debug and release workflows now explicitly install `platform-tools` and the required SDK 35 packages. A subsequent APK build must be verified separately.
 
 ## Executed local results
 
@@ -53,12 +53,12 @@ Synthetic test media are explicitly test fixtures, not Google Flow videos or evi
 
 ## Browser attempt and untested integrations
 
-Playwright 1.64.1 was installed and a matching Chrome for Testing 156 binary downloaded. Launch failed because this managed execution environment denied Chromium's required Unix socket operation (`socket() failed: Operation not permitted`). The fixture tests now explicitly skip where that OS capability is unavailable; GitHub CI includes a separate browser-fixture job for a normal runner. The original failure log is retained. No browser test is represented as passed.
+Playwright 1.64.1 was installed and a matching Chrome for Testing 156 binary downloaded. Launch failed because this managed execution environment denied Chromium's required Unix socket operation (`socket() failed: Operation not permitted`). The fixture tests now explicitly skip where that OS capability is unavailable; GitHub CI includes a separate browser-fixture job for a normal runner. The original failure log is retained. The original local browser attempt did not pass. Subsequently all three synthetic browser tests passed on GitHub hosted Chromium, as recorded above; this does not validate the live Flow website.
 
 The following have **not** been tested:
 
 1. Installing, launching or operating the APK on a real Android phone/emulator; accessibility and visual appearance on real devices.
-2. A successful GitHub Actions build or artifact upload was not available at the time of the first CI attempt; repository publication is now verified as recorded above.
+2. A successful GitHub Android build was not available at the time of the second CI attempt. Repository publication, backend CI, synthetic browser CI and their report artifacts are verified as recorded above.
 3. Building/running the cloud Docker image, obtaining TLS certificates, noVNC login, VM reboot, disk-full handling, encrypted backup or restore. No Docker daemon/cloud VM account is available in this session.
 4. Google hosted-browser sign-in, account eligibility/credits, live Flow selectors, reference attachment, generation, output attribution or download behavior.
 5. Live Gemini planning, transcription/perceptual QA, model access, billing or quota. No API key/model is configured.
