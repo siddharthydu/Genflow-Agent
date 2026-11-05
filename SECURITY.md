@@ -1,0 +1,13 @@
+# GenFlow security and operations
+
+Single-owner installation. No public registration or multi-tenant access controls are offered. Use the reverse proxy; do not publish the API or desktop/CDP ports directly. The Android client requires trusted HTTPS, refuses redirects for API requests and stores sessions with Android Keystore encryption. Passwords are scrypt-hashed; session tokens are stored hashed with 7-day expiration. Administrator reset revokes sessions. This has not undergone an independent security audit.
+
+Google login is manual in the owner's visible persistent cloud browser. Never submit passwords, OTPs, cookies or Google session tokens to chat or GenFlow's API. The browser profile is sensitive credential material: protect the VM account, disk snapshots, desktop password and backups. The desktop uses a separate Caddy basic-auth password. Google or the VM environment may reject login; the application does not bypass that protection.
+
+Provider analysis keys stay in private server environment variables. Script, portrait and clip inputs are sent to Gemini for planning/analysis when enabled; review Google's applicable data terms for the account. Video generation remains exclusively within Google Flow. Avoid putting secrets in scripts or QA review notes. Prompt injection mitigations in model instructions are not a guarantee against adversarial inputs; only the owner should submit content.
+
+The API is an intentionally small Python standard-library service with bounded threads, timeouts, upload limits and fixed/allowlisted provider hosts. This is not a substitute for an external penetration test, dependency/image vulnerability scanning, disk encryption, intrusion monitoring or disaster recovery drills. It has no MFA or multi-user roles. The in-memory login throttle resets when the API restarts and is shared by proxy source; a hostile public deployment should add infrastructure-level rate limits or a private VPN.
+
+SQLite WAL and named-volume files survive restarts, but do not survive deleting the volume/VM. Take encrypted off-site backups and verify restores. Current schema version is 1; no historical upgrades have been tested. Media retention is manual. Monitor CPU, memory and disk. Never run multiple workers against the same profile/database without redesigning locking and browser ownership.
+
+Generation attempts are budgeted in counts, not currency. Actual Google credit costs depend on the user's settings. In-flight submissions cannot be uncharged or reliably cancelled by this backend. Ambiguous submission outcomes deliberately stop for reconciliation. Changing the browser project/settings while a job is running can invalidate output attribution.

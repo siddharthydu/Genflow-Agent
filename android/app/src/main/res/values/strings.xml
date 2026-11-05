@@ -1,0 +1,5 @@
+<resources>
+<string name="app_name">GenFlow</string>
+<string name="default_generation_budget">60</string>
+<string name="default_max_attempts">3</string>
+</resources>

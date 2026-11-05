@@ -1,0 +1,5 @@
+GenFlow includes deploy/chromium-seccomp.json copied from Microsoft's Playwright repository:
+https://github.com/microsoft/playwright/blob/main/utils/docker/seccomp_profile.json
+Playwright is licensed under Apache License 2.0. The profile derives from Docker's default seccomp profile.
+Upstream license: https://github.com/microsoft/playwright/blob/main/LICENSE
+FFmpeg and browser dependencies retain their own licenses; review distribution obligations for your deployment.

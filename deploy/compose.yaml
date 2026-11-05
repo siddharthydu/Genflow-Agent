@@ -1,0 +1,44 @@
+name: genflow
+services:
+  genflow:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    restart: unless-stopped
+    init: true
+    shm_size: 1gb
+    mem_limit: 6g
+    cpus: 2
+    environment:
+      GEMINI_API_KEY: ${GEMINI_API_KEY:?Configure GEMINI_API_KEY in deploy/.env}
+      GEMINI_MODEL: ${GEMINI_MODEL:?Choose a currently available video-understanding model}
+    volumes:
+      - genflow-data:/data
+    security_opt:
+      - no-new-privileges:true
+      - seccomp=./chromium-seccomp.json
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  caddy:
+    image: caddy:2.10.2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      GENFLOW_DOMAIN: ${GENFLOW_DOMAIN:?Set your HTTPS hostname}
+      GENFLOW_DESKTOP_HASH: ${GENFLOW_DESKTOP_HASH:?Generate a separate desktop password hash}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      genflow:
+        condition: service_healthy
+volumes:
+  genflow-data:
+  caddy-data:
+  caddy-config:

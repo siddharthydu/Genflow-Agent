@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.gradle/
+**/build/
+local.properties
+/data/
+*.jks
+*.keystore
+*.apk
+*.mp4
+*.sqlite3*
+browser-profile/

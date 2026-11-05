@@ -1,0 +1,8 @@
+test_multiple_new_results_pause_without_downloading_wrong_clip (test_browser_fixture.BrowserFixtureTests.test_multiple_new_results_pause_without_downloading_wrong_clip) ... skipped 'Requires Playwright, GENFLOW_TEST_CHROMIUM and permitted Unix sockets; current sandbox cannot run Chromium'
+test_non_unique_controls_stop_before_submission (test_browser_fixture.BrowserFixtureTests.test_non_unique_controls_stop_before_submission) ... skipped 'Requires Playwright, GENFLOW_TEST_CHROMIUM and permitted Unix sockets; current sandbox cannot run Chromium'
+test_prompt_reference_submit_and_download_on_synthetic_page (test_browser_fixture.BrowserFixtureTests.test_prompt_reference_submit_and_download_on_synthetic_page) ... skipped 'Requires Playwright, GENFLOW_TEST_CHROMIUM and permitted Unix sockets; current sandbox cannot run Chromium'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK (skipped=3)

@@ -1,0 +1,40 @@
+test_atomic_claim (test_genflow.CoreTests.test_atomic_claim) ... ok
+test_cancel_prevents_claim (test_genflow.CoreTests.test_cancel_prevents_claim) ... ok
+test_character_snapshot_is_immutable (test_genflow.CoreTests.test_character_snapshot_is_immutable) ... ok
+test_flow_rejects_unapproved_origins (test_genflow.CoreTests.test_flow_rejects_unapproved_origins) ... ok
+test_job_creation_is_idempotent_and_detects_conflicts (test_genflow.CoreTests.test_job_creation_is_idempotent_and_detects_conflicts) ... ok
+test_login_rate_limit (test_genflow.CoreTests.test_login_rate_limit) ... ok
+test_missing_api_config_blocks_without_network (test_genflow.CoreTests.test_missing_api_config_blocks_without_network) ... ok
+test_ordered_dialogue_audit (test_genflow.CoreTests.test_ordered_dialogue_audit) ... ok
+test_password_and_session_expiry (test_genflow.CoreTests.test_password_and_session_expiry) ... ok
+test_plan_rejects_unknown_identity_and_duration (test_genflow.CoreTests.test_plan_rejects_unknown_identity_and_duration) ... ok
+test_prompt_keeps_exact_dialogue_and_bible (test_genflow.CoreTests.test_prompt_keeps_exact_dialogue_and_bible) ... ok
+test_qa_rejects_incomplete_model_checks (test_genflow.CoreTests.test_qa_rejects_incomplete_model_checks) ... ok
+test_recovery_blocks_unknown_submission (test_genflow.CoreTests.test_recovery_blocks_unknown_submission) ... ok
+test_recovery_requeues_safe_work (test_genflow.CoreTests.test_recovery_requeues_safe_work) ... ok
+test_settings_validation (test_genflow.CoreTests.test_settings_validation) ... ok
+test_append_reusable_character_and_reject_duplicate (test_genflow.HTTPTests.test_append_reusable_character_and_reject_duplicate) ... ok
+test_bad_json_and_unknown_route (test_genflow.HTTPTests.test_bad_json_and_unknown_route) ... ok
+test_create_poll_cancel_resume (test_genflow.HTTPTests.test_create_poll_cancel_resume) ... ok
+test_export_byte_ranges_are_authenticated (test_genflow.HTTPTests.test_export_byte_ranges_are_authenticated) ... ok
+test_flow_config_does_not_accept_secrets (test_genflow.HTTPTests.test_flow_config_does_not_accept_secrets) ... ok
+test_health_and_auth (test_genflow.HTTPTests.test_health_and_auth) ... ok
+test_logout_revokes_session (test_genflow.HTTPTests.test_logout_revokes_session) ... ok
+test_no_export_before_completion (test_genflow.HTTPTests.test_no_export_before_completion) ... ok
+test_review_cannot_bypass_technical_qa (test_genflow.HTTPTests.test_review_cannot_bypass_technical_qa) ... ok
+test_upload_reconcile_analyze_and_record_human_review (test_genflow.HTTPTests.test_upload_reconcile_analyze_and_record_human_review) ... ok
+test_ambiguous_generation_is_not_automatically_repeated (test_genflow.MediaTests.test_ambiguous_generation_is_not_automatically_repeated) ... ok
+test_export_normalizes_and_orders_tracks (test_genflow.MediaTests.test_export_normalizes_and_orders_tracks) ... ok
+test_full_technical_qa (test_genflow.MediaTests.test_full_technical_qa) ... ok
+test_invalid_video_rejected (test_genflow.MediaTests.test_invalid_video_rejected) ... ok
+test_media_process_cancellation (test_genflow.MediaTests.test_media_process_cancellation) ... ok
+test_missing_audio_is_rejected (test_genflow.MediaTests.test_missing_audio_is_rejected) ... ok
+test_semantic_uncertainty_blocks_for_human_review (test_genflow.MediaTests.test_semantic_uncertainty_blocks_for_human_review) ... ok
+test_worker_completed_pipeline_with_test_doubles (test_genflow.MediaTests.test_worker_completed_pipeline_with_test_doubles) ... ok
+test_worker_retry_budget_and_feedback (test_genflow.MediaTests.test_worker_retry_budget_and_feedback) ... ok
+test_wrong_aspect_is_rejected (test_genflow.MediaTests.test_wrong_aspect_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 15.461s
+
+OK

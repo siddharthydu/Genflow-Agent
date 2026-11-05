@@ -1,0 +1,18 @@
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): false
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: C=US, O=Android, CN=Android Debug
+Signer #1 certificate SHA-256 digest: 64c04ae70d45411e302f1691b58a62a6b523ad683fcc7f5d751f40d07c2845c7
+Signer #1 certificate SHA-1 digest: 05979b49864ad959b89ac4a697e572fbedf4fcc6
+Signer #1 certificate MD5 digest: 600362cb0b934e51b7e1f35326f2eadd
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 2048
+Signer #1 public key SHA-256 digest: dcd1d3e9943c50649d67f38af3e39e750e8fb2270f7e3df575097ecded386ee9
+Signer #1 public key SHA-1 digest: 0e1ee7c2a890f56d7916a88687b7232e51e3e2b3
+Signer #1 public key MD5 digest: 61b0493ca15edb4a0fb956968e68a166
+848c4324a2655bc16750b8bf5c32e25f3bdde3948e6130ff347e4d623e41cdeb  GenFlow.apk

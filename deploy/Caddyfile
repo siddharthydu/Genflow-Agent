@@ -1,0 +1,23 @@
+{$GENFLOW_DOMAIN} {
+    header {
+        Strict-Transport-Security "max-age=31536000"
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "no-referrer"
+    }
+    request_body {
+        max_size 205MB
+    }
+    handle_path /desktop/* {
+        basic_auth {
+            studio {$GENFLOW_DESKTOP_HASH}
+        }
+        reverse_proxy genflow:6080
+    }
+    handle /api/* {
+        reverse_proxy genflow:8080
+    }
+    handle /health {
+        reverse_proxy genflow:8080
+    }
+    respond "GenFlow cloud studio. Connect from the Android application." 200
+}

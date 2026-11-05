@@ -1,0 +1,144 @@
+test_multiple_new_results_pause_without_downloading_wrong_clip (test_browser_fixture.BrowserFixtureTests.test_multiple_new_results_pause_without_downloading_wrong_clip) ... ERROR
+test_non_unique_controls_stop_before_submission (test_browser_fixture.BrowserFixtureTests.test_non_unique_controls_stop_before_submission) ... ERROR
+test_prompt_reference_submit_and_download_on_synthetic_page (test_browser_fixture.BrowserFixtureTests.test_prompt_reference_submit_and_download_on_synthetic_page) ... ERROR
+
+======================================================================
+ERROR: test_multiple_new_results_pause_without_downloading_wrong_clip (test_browser_fixture.BrowserFixtureTests.test_multiple_new_results_pause_without_downloading_wrong_clip)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/cb99cd1b02f6/GenFlow/backend/tests/test_browser_fixture.py", line 23, in setUp
+    self.browser = self.pw.chromium.launch(headless=True, executable_path=None if executable == 'auto' else executable)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/genflow-browser-env/lib/python3.12/site-packages/playwright/sync_api/_generated.py", line 4103, in launch
+    self._sync(
+  File "/tmp/genflow-browser-env/lib/python3.12/site-packages/playwright/_impl/_sync_base.py", line 111, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/tmp/genflow-browser-env/lib/python3.12/site-packages/playwright/_impl/_browser_type.py", line 101, in launch
+    await self._channel.send(
+  File "/tmp/genflow-browser-env/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/genflow-browser-env/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: BrowserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /tmp/genflow-chromium/chrome-linux64/chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,AvoidCorsURLLoaderRestartOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/tmp/playwright_chromiumdev_profile-gOS51h --remote-debugging-pipe --no-startup-window
+<launched> pid=18
+[pid=18][err] [18:18:1105/161224.979261:FATAL:chrome/browser/process_singleton_posix.cc:297] Check failed: . socket() failed: Operation not permitted (1)
+[pid=18][err] [1105/161224.983204:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:27] ptrace: Operation not permitted (1)
+[pid=18][err] [1105/161224.983296:ERROR:third_party/crashpad/crashpad/util/file/directory_reader_posix.cc:43] opendir /proc/18/task: No such file or directory (2)
+[pid=18][err] Received signal 6
+[pid=18][err] #0 0x5595ce27ee33 (/tmp/genflow-chromium/chrome-linux64/chrome+0x6e7ce32)
+[pid=18][err] #1 0x5595d32a2d34 (/tmp/genflow-chromium/chrome-linux64/chrome+0xbea0d33)
+[pid=18][err] #2 0x7f8152f80330 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x4532f)
+[pid=18][err] #3 0x7f8152f8027e (/usr/lib/x86_64-linux-gnu/libc.so.6+0x4527d)
+[pid=18][err] #4 0x7f8152f638ff (/usr/lib/x86_64-linux-gnu/libc.so.6+0x288fe)
+[pid=18][err] #5 0x5595d3299205 (/tmp/genflow-chromium/chrome-linux64/chrome+0xbe97204)
+[pid=18][err] #6 0x5595d3257ecd (/tmp/genflow-chromium/chrome-linux64/chrome+0xbe55ecc)
+[pid=18][err] #7 0x5595d3257e1d (/tmp/genflow-chromium/chrome-linux64/chrome+0xbe55e1c)
+[pid=18][err] #8 0x5595cc230cf2 (/tmp/genflow-chromium/chrome-linux64/chrome+0x4e2ecf1)
+[pid=18][err] #9 0x5595cc22e3b9 (/tmp/genflow-chromium/chrome-linux64/chrome+0x4e2c3b8)
+[pid=18][err] #10 0x5595d3258040 (/tmp/genflow-chromium/chrome-linux64/chrome+0xbe5603f)
+[pid=18][err] #11 0x5595cbd7cc79 (/tmp/genflow-chromium/chrome-linux64/chrome+0x497ac78)
+[pid=18][err] #12 0x5595cdd89175 (/tmp/genflow-chromium/chrome-linux64/chrome+0x6987174)
+[pid=18][err] #13 0x5595cda822b7 (/tmp/genflow-chromium/chrome-linux64/chrome+0x66802b6)
+[pid=18][err] #14 0x5595cda820c1 (/tmp/genflow-chromium/chrome-linux64/chrome+0x66800c0)
+[pid=18][err] #15 0x5595cda82064 (/tmp/genflow-chromium/chrome-linux64/chrome+0x6680063)
+[pid=18][err] #16 0x5595ce0e7a79 (/tmp/genflow-chromium/chrome-linux64/chrome+0x6ce5a78)
+[pid=18][err] #17 0x5595ce0e6a93 (/tmp/genflow-chromium/chrome-linux64/chrome+0x6ce4a92)
+[pid=18][err] #18 0x5595cd1ef59c (/tmp/genflow-chromium/chrome-linux64/chrome+0x5ded59b)
+[pid=18][err] #19 0x5595cd1ed6fe (/tmp/genflow-chromium/chrome-linux64/chrome+0x5deb6fd)
+[pid=18][err] #20 0x5595cd1ea06f (/tmp/genflow-chromium/chrome-linux64/chrome+0x5de806e)
+[pid=18][err] #21 0x7f8152f651ca (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9)
+[pid=18][err] #22 0x7f8152f6528b (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a28a)
+[pid=18][err] #23 0x5595ce50e38a (/tmp/genflow-chromium/chrome-linux64/chrome+0x710c389)
+[pid=18][err]   r8: 000021780006859b  r9: 0000000000000001 r10: 0000000000000008 r11: 0000000000000246
+[pid=18][err]  r12: 0000000000000006 r13: 000000000000008c r14: 0000000000000016 r15: 00002178000f0500
+[pid=18][err]   di: 0000000000000012  si: 0000000000000012  bp: 00007ffc9d307a20  bx: 0000000000000012
+[pid=18][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 00007f8152fd9b2c  sp: 00007ffc9d3079e0
+[pid=18][err]   ip: 00007f8152fd9b2c efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+[pid=18][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+[pid=18][err] [end of stack trace]
+Call log:
+  - <launching> /tmp/genflow-chromium/chrome-linux64/chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,AvoidCorsURLLoaderRestartOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/tmp/playwright_chromiumdev_profile-gOS51h --remote-debugging-pipe --no-startup-window
+  - <launched> pid=18
+  - [pid=18][err] [18:18:1105/161224.979261:FATAL:chrome/browser/process_singleton_posix.cc:297] Check failed: . socket() failed: Operation not permitted (1)
+  - [pid=18][err] [1105/161224.983204:ERROR:third_party/crashpad/crashpad/util/linux/scoped_ptrace_attach.cc:27] ptrace: Operation not permitted (1)
+  - [pid=18][err] [1105/161224.983296:ERROR:third_party/crashpad/crashpad/util/file/directory_reader_posix.cc:43] opendir /proc/18/task: No such file or directory (2)
+  - [pid=18][err] Received signal 6
+  - [pid=18][err] #0 0x5595ce27ee33 (/tmp/genflow-chromium/chrome-linux64/chrome+0x6e7ce32)
+  - [pid=18][err] #1 0x5595d32a2d34 (/tmp/genflow-chromium/chrome-linux64/chrome+0xbea0d33)
+  - [pid=18][err] #2 0x7f8152f80330 (/usr/lib/x86_64-linux-gnu/libc.so.6+0x4532f)
+  - [pid=18][err] #3 0x7f8152f8027e (/usr/lib/x86_64-linux-gnu/libc.so.6+0x4527d)
+  - [pid=18][err] #4 0x7f8152f638ff (/usr/lib/x86_64-linux-gnu/libc.so.6+0x288fe)
+  - [pid=18][err] #5 0x5595d3299205 (/tmp/genflow-chromium/chrome-linux64/chrome+0xbe97204)
+  - [pid=18][err] #6 0x5595d3257ecd (/tmp/genflow-chromium/chrome-linux64/chrome+0xbe55ecc)
+  - [pid=18][err] #7 0x5595d3257e1d (/tmp/genflow-chromium/chrome-linux64/chrome+0xbe55e1c)
+  - [pid=18][err] #8 0x5595cc230cf2 (/tmp/genflow-chromium/chrome-linux64/chrome+0x4e2ecf1)
+  - [pid=18][err] #9 0x5595cc22e3b9 (/tmp/genflow-chromium/chrome-linux64/chrome+0x4e2c3b8)
+  - [pid=18][err] #10 0x5595d3258040 (/tmp/genflow-chromium/chrome-linux64/chrome+0xbe5603f)
+  - [pid=18][err] #11 0x5595cbd7cc79 (/tmp/genflow-chromium/chrome-linux64/chrome+0x497ac78)
+  - [pid=18][err] #12 0x5595cdd89175 (/tmp/genflow-chromium/chrome-linux64/chrome+0x6987174)
+  - [pid=18][err] #13 0x5595cda822b7 (/tmp/genflow-chromium/chrome-linux64/chrome+0x66802b6)
+  - [pid=18][err] #14 0x5595cda820c1 (/tmp/genflow-chromium/chrome-linux64/chrome+0x66800c0)
+  - [pid=18][err] #15 0x5595cda82064 (/tmp/genflow-chromium/chrome-linux64/chrome+0x6680063)
+  - [pid=18][err] #16 0x5595ce0e7a79 (/tmp/genflow-chromium/chrome-linux64/chrome+0x6ce5a78)
+  - [pid=18][err] #17 0x5595ce0e6a93 (/tmp/genflow-chromium/chrome-linux64/chrome+0x6ce4a92)
+  - [pid=18][err] #18 0x5595cd1ef59c (/tmp/genflow-chromium/chrome-linux64/chrome+0x5ded59b)
+  - [pid=18][err] #19 0x5595cd1ed6fe (/tmp/genflow-chromium/chrome-linux64/chrome+0x5deb6fd)
+  - [pid=18][err] #20 0x5595cd1ea06f (/tmp/genflow-chromium/chrome-linux64/chrome+0x5de806e)
+  - [pid=18][err] #21 0x7f8152f651ca (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a1c9)
+  - [pid=18][err] #22 0x7f8152f6528b (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a28a)
+  - [pid=18][err] #23 0x5595ce50e38a (/tmp/genflow-chromium/chrome-linux64/chrome+0x710c389)
+  - [pid=18][err]   r8: 000021780006859b  r9: 0000000000000001 r10: 0000000000000008 r11: 0000000000000246
+  - [pid=18][err]  r12: 0000000000000006 r13: 000000000000008c r14: 0000000000000016 r15: 00002178000f0500
+  - [pid=18][err]   di: 0000000000000012  si: 0000000000000012  bp: 00007ffc9d307a20  bx: 0000000000000012
+  - [pid=18][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 00007f8152fd9b2c  sp: 00007ffc9d3079e0
+  - [pid=18][err]   ip: 00007f8152fd9b2c efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+  - [pid=18][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+  - [pid=18][err] [end of stack trace]
+  - [pid=18] <gracefully close start>
+  - [pid=18] <kill>
+  - [pid=18] <will force kill>
+  - [pid=18] <process did exit: exitCode=null, signal=SIGABRT>
+  - [pid=18] starting temporary directories cleanup
+  - [pid=18] finished temporary directories cleanup
+  - [pid=18] <gracefully close end>
+
+
+======================================================================
+ERROR: test_non_unique_controls_stop_before_submission (test_browser_fixture.BrowserFixtureTests.test_non_unique_controls_stop_before_submission)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/cb99cd1b02f6/GenFlow/backend/tests/test_browser_fixture.py", line 21, in setUp
+    self.pw = sync_playwright().start()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/genflow-browser-env/lib/python3.12/site-packages/playwright/sync_api/_context_manager.py", line 103, in start
+    return self.__enter__()
+           ^^^^^^^^^^^^^^^^
+  File "/tmp/genflow-browser-env/lib/python3.12/site-packages/playwright/sync_api/_context_manager.py", line 46, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+======================================================================
+ERROR: test_prompt_reference_submit_and_download_on_synthetic_page (test_browser_fixture.BrowserFixtureTests.test_prompt_reference_submit_and_download_on_synthetic_page)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/cb99cd1b02f6/GenFlow/backend/tests/test_browser_fixture.py", line 21, in setUp
+    self.pw = sync_playwright().start()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/genflow-browser-env/lib/python3.12/site-packages/playwright/sync_api/_context_manager.py", line 103, in start
+    return self.__enter__()
+           ^^^^^^^^^^^^^^^^
+  File "/tmp/genflow-browser-env/lib/python3.12/site-packages/playwright/sync_api/_context_manager.py", line 46, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+----------------------------------------------------------------------
+Ran 3 tests in 5.471s
+
+FAILED (errors=3)

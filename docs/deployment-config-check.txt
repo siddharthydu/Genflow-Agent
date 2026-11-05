@@ -1,0 +1,2 @@
+Caddy 2.10.2 successfully adapted the GenFlow Caddyfile to JSON using synthetic configuration.
+This is a syntax/configuration check, not TLS issuance, desktop access or cloud deployment.
