@@ -18,7 +18,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Configure Ubuntu package downloads
+        run: bash .github/scripts/configure-apt.sh
+      - name: Install media test dependencies
+        timeout-minutes: 8
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
       - name: Backend tests using explicitly synthetic fixtures
         run: |
           set -o pipefail
@@ -29,7 +33,6 @@ jobs:
           name: GenFlow-backend-test-report
           path: backend-tests.txt
   apk:
-    needs: backend
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:
@@ -46,12 +49,19 @@ jobs:
       - name: Compile, lint and unit checks
         working-directory: android
         run: gradle --no-daemon :app:assembleDebug :app:lintDebug :app:testDebugUnitTest
-      - name: Name installable development-signed APK
-        run: cp android/app/build/outputs/apk/debug/app-debug.apk GenFlow.apk
+      - name: Verify and name development-signed APK
+        run: |
+          set -o pipefail
+          cp android/app/build/outputs/apk/debug/app-debug.apk GenFlow.apk
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs GenFlow.apk | tee GenFlow-apk-verification.txt
+          sha256sum GenFlow.apk | tee GenFlow.apk.sha256
       - uses: actions/upload-artifact@v4
         with:
           name: GenFlow-Android-APK
-          path: GenFlow.apk
+          path: |
+            GenFlow.apk
+            GenFlow.apk.sha256
+            GenFlow-apk-verification.txt
           if-no-files-found: error
           retention-days: 30
       - uses: actions/upload-artifact@v4
@@ -60,7 +70,6 @@ jobs:
           name: GenFlow-Android-lint
           path: android/app/build/reports/
   container:
-    needs: backend
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:
@@ -68,7 +77,6 @@ jobs:
       - name: Build cloud runtime (does not deploy or test Google login)
         run: docker build -f deploy/Dockerfile -t genflow:ci .
   browser-adapter:
-    needs: backend
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
@@ -77,7 +85,10 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -r backend/requirements.txt
+      - name: Configure Ubuntu package downloads
+        run: bash .github/scripts/configure-apt.sh
       - run: python -m playwright install --with-deps chromium
+        timeout-minutes: 10
       - name: Synthetic browser fixture (not a live Google Flow test)
         env:
           GENFLOW_TEST_CHROMIUM: auto

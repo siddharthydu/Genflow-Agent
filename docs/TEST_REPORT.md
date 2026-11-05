@@ -2,7 +2,13 @@
 
 Date: 5 November 2026. This report distinguishes executed local checks from unverified integrations.
 
-## Executed results
+## GitHub publication and first CI attempt
+
+The installation/authorization blocker was resolved. Branch creation succeeded, and import commit `010bcc929339890cdafee4ad5299006108c9eca4` was published to `main`. All 48 source/evidence files and both preserved artifacts matched local Git object hashes.
+
+[CI run 42048478123](https://github.com/siddharthydu/Genflow-Agent/actions/runs/42048478123) was cancelled at the 20-minute backend job limit while downloading FFmpeg dependencies from `azure.archive.ubuntu.com`. No backend tests ran and APK/container/browser jobs were skipped. This was not a test pass. The workflow now switches that mirror to official Ubuntu HTTPS endpoints, limits dependency installation time, and runs Android/container/browser checks independently. Results of the next run must be checked separately.
+
+## Executed local results
 
 | Check | Actual result | Evidence |
 |---|---|---|
@@ -52,7 +58,7 @@ Playwright 1.64.1 was installed and a matching Chrome for Testing 156 binary dow
 The following have **not** been tested:
 
 1. Installing, launching or operating the APK on a real Android phone/emulator; accessibility and visual appearance on real devices.
-2. A GitHub Actions run, artifact upload, or repository push. GitHub identity was available, but accessible repositories and installations were empty. The connector exposes no repository-creation action.
+2. A successful GitHub Actions build or artifact upload was not available at the time of the first CI attempt; repository publication is now verified as recorded above.
 3. Building/running the cloud Docker image, obtaining TLS certificates, noVNC login, VM reboot, disk-full handling, encrypted backup or restore. No Docker daemon/cloud VM account is available in this session.
 4. Google hosted-browser sign-in, account eligibility/credits, live Flow selectors, reference attachment, generation, output attribution or download behavior.
 5. Live Gemini planning, transcription/perceptual QA, model access, billing or quota. No API key/model is configured.

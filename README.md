@@ -2,7 +2,13 @@
 
 Android-controlled production orchestration with Google Flow as the exclusive AI video generator.
 
-**Delivery status:** real backend and Android source have been implemented; local backend/media tests pass. The app is **not yet an end-to-end verified working product**. A development-signed Android APK has been built locally and its signature verified. No repository push, cloud deployment, Android device installation, authenticated Flow generation or live Gemini QA has been completed in this session. See the exact prerequisites in [architecture and feasibility audit](docs/ARCHITECTURE.md).
+**Delivery status:** real backend and Android source have been implemented; local backend/media tests pass. The app is **not yet an end-to-end verified working product**. A development-signed Android APK has been built locally and its signature verified. The existing source and original APK are now published to `siddharthydu/Genflow-Agent`; all 50 imported files were verified against local Git hashes. Cloud deployment, Android device installation, authenticated Flow generation and live Gemini QA remain untested. See the exact prerequisites in [architecture and feasibility audit](docs/ARCHITECTURE.md).
+
+## Downloads and builds
+
+- [Original development APK](artifacts/GenFlow.apk) — preserved byte-for-byte; SHA-256 `848c4324a2655bc16750b8bf5c32e25f3bdde3948e6130ff347e4d623e41cdeb`.
+- [GitHub Actions](https://github.com/siddharthydu/Genflow-Agent/actions/workflows/android.yml) — download `GenFlow-Android-APK` from a successful build.
+- [Original source history](artifacts/GenFlow-source.bundle) — recovery bundle from local commit `9ba7780f19032b810c1fd3ddfba8553c6175c6ea`.
 
 ## Source
 

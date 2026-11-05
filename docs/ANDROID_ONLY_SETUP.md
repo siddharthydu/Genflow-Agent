@@ -1,28 +1,25 @@
 # GenFlow: Android-only setup
 
-This guide is executable from an Android browser, but its cloud deployment steps have not been performed in this session. A computer is not required; a persistent paid cloud VM and an HTTPS hostname are required. The GitHub repository URL is not yet available because the connector currently sees no repositories. Do not enter any Google password, OTP, cookies or session tokens into ChatGPT or GitHub secrets.
+This guide is executable from an Android browser, but its cloud deployment steps have not been performed in this session. A computer is not required; a persistent paid cloud VM and an HTTPS hostname are required. The existing public repository is https://github.com/siddharthydu/Genflow-Agent. Do not enter any Google password, OTP, cookies or session tokens into ChatGPT or GitHub secrets.
 
-## 1. Give GitHub access
+## 1. Existing repository
 
-1. In Chrome on Android, open https://github.com/new and choose **Desktop site** if needed.
-2. Create a **private** repository named `GenFlow`. Add a README so it has an initial commit. Keep the default branch `main`.
-3. Open GitHub Settings → Applications → Installed GitHub Apps → the app used for your ChatGPT GitHub connection → Configure. Grant access to `GenFlow`. If using OAuth instead, reconnect the GitHub integration and authorize the repository.
-4. Paste only the repository URL back into this conversation. Do not paste a token. Source can then be pushed through the connected GitHub tools.
+Use [siddharthydu/Genflow-Agent](https://github.com/siddharthydu/Genflow-Agent), branch `main`. The original source and saved APK have been uploaded and verified against their Git hashes. No new repository or source regeneration is needed.
 
-Until step 4 and a successful push, the included Actions YAML is source code on disk, not a configured cloud build or completed workflow run.
+The preserved original development APK is in [`artifacts/GenFlow.apk`](../artifacts/GenFlow.apk); the original local Git history is in [`artifacts/GenFlow-source.bundle`](../artifacts/GenFlow-source.bundle). The bundle is a recovery copy, not a second implementation. Future development takes place in this repository.
 
 ## 2. Build and download the APK
 
-After source is actually in the repository:
+To build the published source:
 
 1. Open the repository → **Actions** → **GenFlow Android and backend checks**.
-2. If prompted, enable Actions for your own private repository. GitHub plan quotas may apply.
+2. If prompted, enable Actions for this repository. GitHub plan quotas may apply.
 3. Choose **Run workflow** → `main` → **Run workflow**. A push to `main` also starts it.
 4. Wait for `backend` and `apk` to turn green. If a job fails, open its log; do not assume an APK exists.
 5. Open the successful run → Artifacts → **GenFlow-Android-APK**. Download the ZIP and use Android Files to extract **GenFlow.apk**. This ZIP is GitHub's artifact container, not a project scaffold.
 6. Tap `GenFlow.apk`, permit installation from your browser/file manager when Android asks, and install.
 
-The default APK is development-signed. It is installable, but a debug signing key on ephemeral runners is not a stable distribution identity. A later build might require uninstalling the previous development build. A stable signed release uses `release.yml` and a private keystore. A development-signed APK was produced locally and its signature verified; installation on a real Android device has not been tested. The delivered APK can be installed directly; the steps above describe future GitHub builds once source is published.
+The default APK is development-signed. It is installable, but a debug signing key on ephemeral runners is not a stable distribution identity. A later build might require uninstalling the previous development build. A stable signed release uses `release.yml` and a private keystore. A development-signed APK was produced locally and its signature verified; installation on a real Android device has not been tested. The delivered APK can be installed directly; the steps above describe builds of the published source.
 
 ### Optional stable release key
 
@@ -43,11 +40,11 @@ Use a provider whose web console includes a browser terminal or SSH console. Sug
 2. Point an owned hostname, for example `genflow.yourdomain.com`, to the VM public IP using a DNS A record. Remove an unrelated AAAA record if the VM has no IPv6.
 3. Allow TCP 80/443 inbound. Restrict SSH to your access method/IP. Do **not** expose 5900, 6080, 8080 or 9222 publicly. The Compose file only publishes 80/443.
 4. Use the provider's browser terminal. Install Docker Engine with its Compose plugin using Docker's official Ubuntu instructions: https://docs.docker.com/engine/install/ubuntu/ . Confirm `docker compose version` works. Your shell account must have Docker access; use `sudo` if required. Docker access is effectively host administrative access.
-5. Clone the private repository. Prefer GitHub CLI's browser/device login from your terminal (`gh auth login` → GitHub.com → HTTPS → browser login), then `gh repo clone YOUR_ACCOUNT/GenFlow`. Enter the displayed device code only on GitHub's page. Do not share it here. Alternatively use an SSH key added to GitHub from the provider terminal.
+5. Clone the existing public repository in the VM browser terminal: `git clone https://github.com/siddharthydu/Genflow-Agent.git`. Reading this public source does not require a GitHub token. Keep all server credentials and generated media private.
 6. Change to the project folder and create the private configuration:
 
 ```bash
-cd GenFlow/deploy
+cd Genflow-Agent/deploy
 umask 077
 cp .env.example .env
 nano .env
@@ -65,7 +62,7 @@ Enter a strong, unique desktop password when prompted. Put its resulting bcrypt 
 
 ## 4. Start the backend
 
-From `GenFlow/deploy` in the VM terminal:
+From `Genflow-Agent/deploy` in the VM terminal:
 
 ```bash
 docker compose build
